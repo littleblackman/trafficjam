@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script type="text/javascript" src="{{ asset('js/jquery321.min.js') }}"></script>
+        {%- include "MaterializeBundle:Materialize:css.html.twig" -%}
+
+    </head>
+    <body>
+
+        {% block body %}{% endblock %}
+
+        {%- include "MaterializeBundle:Materialize:js.html.twig" -%}
+        {% block javascripts %}{% endblock %}
+
+    </body>
+</html>

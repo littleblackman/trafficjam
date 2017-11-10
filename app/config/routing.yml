@@ -1,0 +1,9 @@
+lbm_challenge:
+    resource: "@LBMChallengeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+lbm_daisy:
+    resource: "@LBMDaisyBundle/Controller/"
+    type:     annotation
+    prefix:   /
