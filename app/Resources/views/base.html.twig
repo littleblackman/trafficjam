@@ -7,16 +7,19 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <script type="text/javascript" src="{{ asset('js/jquery321.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
-
         {%- include "MaterializeBundle:Materialize:css.html.twig" -%}
+        <script type="text/javascript" src="{{ asset('css/style.js') }}"></script>
+
 
     </head>
     <body>
 
         {% block body %}{% endblock %}
 
+
+
+
         {%- include "MaterializeBundle:Materialize:js.html.twig" -%}
         {% block javascripts %}{% endblock %}
-
     </body>
 </html>

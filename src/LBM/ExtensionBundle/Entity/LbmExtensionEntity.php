@@ -14,6 +14,21 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class LbmExtensionEntity
 {
+    
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    protected $isActive;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_archived", type="boolean")
+     */
+    protected $isArchived;
 
     /**
      * @var \DateTime
@@ -42,20 +57,6 @@ class LbmExtensionEntity
      * @ORM\Column(name="updated_by", type="string", length=255)
      */
     protected $updatedBy;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="is_active", type="boolean")
-     */
-    protected $is_active;
-    
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="is_archived", type="boolean")
-     */
-    protected $is_archived;
 
 
     /**

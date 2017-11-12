@@ -1,24 +1,42 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/security.html
+# app/config/security.yml
+
 security:
+  encoders:
+    Symfony\Component\Security\Core\User\User: plaintext
+    LBM\ChallengeBundle\Entity\LbmUser: plaintext
 
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
-    providers:
-        in_memory:
-            memory: ~
+  role_hierarchy:
+    ROLE_STUDENT: [ROLE_STUDENT]
+    ROLE_MANAGER: [ROLE_MANAGER, ROLE_STUDENT]
+    ROLE_ADMIN: [ROLE_ADMIN, ROLE_MANAGER, ROLE_STUDENT, ROLE_ALLOWED_TO_SWITCH]
 
-    firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+  providers:
+    main:
+      entity:
+        class:    LBM\ChallengeBundle\Entity\LbmUser
+        property: username
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+    main_login:
+      pattern:   ^/login$
+      anonymous: true
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    main:
+      pattern:   ^/
+      anonymous: false
+      provider:  main
+      form_login:
+        login_path: login
+        check_path: login_check
+        default_target_path: home
+
+      logout:
+        path:  logout
+        target: /
+
+  access_control:
+    #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

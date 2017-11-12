@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/daisy", name="home")
+     * @Route("/daisy", name="homeOld")
      *
      */
     public function indexAction(Request $request)
